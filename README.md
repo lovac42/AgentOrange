@@ -155,6 +155,8 @@ This addon ensures a uniform distribution so that all given intervals have the s
 14: 20.00%
 
 ```
+<i>*Note: the float points may have been truncated when I ran the test on 2.0, but it won't make much difference.</i>
+
 
 ### Future development:
 This project maybe merged with DeFuzz in a future date. For now, I will leave it separated as the bulky documentation maybe confusing to new users.
