@@ -1,5 +1,6 @@
 ## Agent Orange: Pseudo-Fuzz Defoliator
 
+<img src="https://github.com/lovac42/AgentOrange/blob/master/screenshots/orange.jpg?raw=true">  
 
 ### About:
 tl;dr Uniform Fuzz Distribution
