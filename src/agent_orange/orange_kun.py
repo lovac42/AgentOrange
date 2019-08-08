@@ -2,7 +2,7 @@
 # Copyright: (C) 2019 Lovac42
 # Support: https://github.com/lovac42/AgentOrange
 # License: GNU GPL, version 3 or later; http://www.gnu.org/copyleft/gpl.html
-# Version: 0.0.1
+# Version: 0.0.2
 
 
 import anki
@@ -20,9 +20,13 @@ def wrap_fuzzIvlRange(sched, ivl, _old):
 
         # fix uneven distribution caused by constrain
         mi=max(1,card.ivl+1,ret[0])
-        return [mi,ret[1]]
-
+        mx=min(sched._revConf(card)['maxIvl'],ret[1])
+        return [mi if mi<mx else mx,mx]
     return ret
 
 Scheduler._fuzzIvlRange=wrap(Scheduler._fuzzIvlRange,wrap_fuzzIvlRange,"around")
 SchedulerV2._fuzzIvlRange=wrap(SchedulerV2._fuzzIvlRange,wrap_fuzzIvlRange,"around")
+
+#TODO:
+# allow backwards fuzz by 1% when max cap is reached.
+# wrap _updateRevIvl

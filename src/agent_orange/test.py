@@ -14,8 +14,14 @@ def test_distribution_probability(grade):
         return
 
     card=mw.reviewer.card
-    old_ivl=card.ivl
+    if card.type != 2:
+        print('Card must be review type')
+        return
+
     dict={}
+    old_ivl=card.ivl
+    print("card.ivl=%d"%old_ivl)
+
     for i in range(10000):
         mw.col.sched._updateRevIvl(card,grade)
         nx=card.ivl
