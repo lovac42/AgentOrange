@@ -2,7 +2,7 @@
 # Copyright: (C) 2019 Lovac42
 # Support: https://github.com/lovac42/AgentOrange
 # License: GNU GPL, version 3 or later; http://www.gnu.org/copyleft/gpl.html
-# Version: 0.0.1
+# Version: 0.0.2
 
 
 import anki
@@ -18,9 +18,11 @@ def wrap_fuzzIvlRange(sched, ivl, _old):
     if card:
         # print("using agent orange")
 
-        # fix uneven distribution caused by constrain
-        mi=max(1,card.ivl+1,ret[0])
-        return [mi,ret[1]]
+        constraint = card.ivl + 1
+        if constraint < ret[1]: # Filter rescheduling cards
+            # fix uneven distribution caused by constrain
+            mi=max(1, constraint, ret[0])
+            return [mi, ret[1]]
 
     return ret
 
